@@ -23,6 +23,8 @@ class ProductController extends Controller
     //store
     public function store(Request $request)
     {
+        // dd($request);
+
         $request->validate([
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string',
@@ -31,6 +33,8 @@ class ProductController extends Controller
             'stock' => 'required|integer',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
+
+
 
         $image = null;
         if ($request->hasFile('image')) {
